@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'museosans';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/MuseoSans_700Web.woff') format('woff');
+}
+
+body {
+  font-family: 'arial', 'serif';
+  color: #333;
+}
+
+h2 {
+  font-family: 'museosans', 'sans-serif';
+  font-size: 26px;
+  font-weight: normal;
+  margin-top: 22px;
+  margin-bottom: 11px;
+}
+
+h3 {
+  font-family: 'museosans', 'sans-serif';
+  font-size: 16px;
+  margin: 0 0 7px 0;
+}
+
+.h3-top-margin {
+  margin-top: 15px;
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 7px 0;
+}
+
+.h4-top-margin {
+  margin-top: 15px;
+}

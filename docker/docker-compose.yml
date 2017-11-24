@@ -1,0 +1,15 @@
+lbg-nginx:
+    build: .
+    dockerfile: Dockerfile-nginx
+    volumes:
+        - ./nginx/:/etc/nginx/
+        - ../app/static/:/usr/share/nginx/html/static/
+    links:
+        - lbg-app
+    restart: always
+lbg-app:
+    build: .
+    dockerfile: Dockerfile-app
+    volumes:
+        - ../app/:/opt/zkv
+    restart: always

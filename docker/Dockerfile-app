@@ -1,0 +1,21 @@
+FROM python:2.7
+MAINTAINER Open State Foundation <developers@openstate.eu>
+
+RUN echo "Europe/Amsterdam" > /etc/timezone \
+    && dpkg-reconfigure -f noninteractive tzdata
+
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y locales
+
+RUN sed -i -e 's/# nl_NL.UTF-8 UTF-8/nl_NL.UTF-8 UTF-8/' /etc/locale.gen \
+    && dpkg-reconfigure --frontend=noninteractive locales
+
+WORKDIR /opt/zkv
+RUN pip install flask flask_sqlalchemy MySQL-python uwsgi pytz
+
+# Production
+CMD uwsgi --socket 0.0.0.0:5000 --touch-reload=uwsgi-touch-reload -w app:app
+
+# Development
+#ENV FLASK_APP=app.py \
+#    FLASK_DEBUG=1
+#CMD flask run --host=0.0.0.0
